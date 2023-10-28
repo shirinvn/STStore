@@ -9,6 +9,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.stsotre.nav.BottomNavBar
 import com.example.stsotre.ui.theme.STStoreTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,6 +26,9 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold( bottomBar = {
 
+                    BottomNavBar(navController = navController, onItemClick = {
+                        navController.navigate(it.route)
+                    })
                 }) {
                     SetUpNavGraph(navController = navController)
                 }

@@ -31,7 +31,6 @@ android {
 
         }
     }
-    //oooooooo
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

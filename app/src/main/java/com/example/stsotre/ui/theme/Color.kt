@@ -14,3 +14,11 @@ val Teal200 = Color(0xFF03DAC5)
 val Colors.splashBg : Color
     @Composable
     get() = Color(0xFFed1b34)
+
+val Colors.selectedBar : Color
+    @Composable
+    get() =if (isLight) Color(0xFF686464) else Color(0xFFed1b34)
+
+val Colors.unselectedBar : Color
+    @Composable
+    get() =if (isLight) Color(0xFF686464) else Color(0xFFed1b34)
