@@ -86,7 +86,8 @@ fun BottomNavBar(
                                    modifier= modifier.height(24.dp))
                            }
                            Text(text = item.name
-                           , textAlign = TextAlign.Center)
+                           , textAlign = TextAlign.Center,
+                               style = MaterialTheme.typography.h6)
 
                        }
 
