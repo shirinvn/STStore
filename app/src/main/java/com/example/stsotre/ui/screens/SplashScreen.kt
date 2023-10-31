@@ -54,7 +54,6 @@ fun Splash(){
                 contentDescription = null)
 
         }
-//ikikijijijilooo
 
         Box(modifier = Modifier
             .fillMaxSize()

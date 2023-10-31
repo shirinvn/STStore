@@ -31,26 +31,26 @@ fun BottomNavBar(
 
     val items= listOf(
         BottomNavItem(
-            name = "home",
+            name = "خانه",
             route = Screen.Home.route,
             selectedIcon = painterResource(id = R.drawable.digi_logo),
             deselectedIcon = painterResource(id = R.drawable.digi_logo),
             ),
         BottomNavItem(
-            name = "category",
+            name = "دسته بندی",
             route = Screen.Category.route,
             selectedIcon = painterResource(id = R.drawable.digi_logo),
             deselectedIcon = painterResource(id = R.drawable.digi_logo),
         )
         ,
         BottomNavItem(
-            name = "basket",
+            name = "سبد خرید",
             route = Screen.Basket.route,
             selectedIcon = painterResource(id = R.drawable.digi_logo),
             deselectedIcon = painterResource(id = R.drawable.digi_logo),
         ),
         BottomNavItem(
-            name = "profile",
+            name = "پروفایل",
             route = Screen.Profile.route,
             selectedIcon = painterResource(id = R.drawable.digi_logo),
             deselectedIcon = painterResource(id = R.drawable.digi_logo),

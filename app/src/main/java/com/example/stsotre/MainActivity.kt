@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter",
-        "UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation"
+        "UnusedMaterialScaffoldPaddingParameter",
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
