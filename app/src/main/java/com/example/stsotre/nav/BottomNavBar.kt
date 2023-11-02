@@ -21,6 +21,9 @@ import com.example.stsotre.R
 import com.example.stsotre.ui.theme.selectedBar
 import com.example.stsotre.ui.theme.unselectedBar
 
+
+
+
 @Composable
 fun BottomNavBar(
     navController:NavController,
@@ -28,6 +31,8 @@ fun BottomNavBar(
     onItemClick: (BottomNavItem)-> Unit
 
 ){
+
+
 
     val items= listOf(
         BottomNavItem(
@@ -58,18 +63,24 @@ fun BottomNavBar(
 
     )
 
+
+
     val backStackEntry = navController.currentBackStackEntryAsState()
     val showBottomBar= backStackEntry.value?.destination?.route in items.map { it.route }
 
+
+
     if (showBottomBar){
-        BottomNavigation (modifier= modifier,
+        BottomNavigation (
+            modifier= modifier,
             backgroundColor = Color.White,
             elevation = 5.dp
         ){
+
             items.forEachIndexed{ index, item ->
                 val seleted = item.route == backStackEntry.value?.destination?.route
                 BottomNavigationItem(selected = seleted
-                    , onClick = {onItemClick },
+                    , onClick = {onItemClick(item) },
                     selectedContentColor = MaterialTheme.colors.selectedBar,
                     unselectedContentColor = MaterialTheme.colors.unselectedBar,
                     icon = {

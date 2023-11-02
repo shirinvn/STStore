@@ -16,22 +16,26 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter",
-        "UnusedMaterialScaffoldPaddingParameter",
+        "UnusedMaterialScaffoldPaddingParameter"
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             STStoreTheme {
                 navController = rememberNavController()
-
-                Scaffold( bottomBar = {
-
-                    BottomNavBar(navController = navController, onItemClick = {
-                        navController.navigate(it.route)
-                    })
-                }) {
+                Scaffold(
+                    bottomBar = {
+                        BottomNavBar(
+                            navController = navController,
+                            onItemClick = {
+                                navController.navigate(it.route)
+                            })
+                    }
+                ) {
                     SetUpNavGraph(navController = navController)
                 }
+
+
             }
         }
     }
