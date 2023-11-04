@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">STSotre</string>
+    <string name="home">خانه</string>
+    <string name="category">دسته‌بندی</string>
+    <string name="my_digikala">دیجی‌کالای من</string>
+    <string name="basket">دیجی‌کالای من</string>
 </resources>
