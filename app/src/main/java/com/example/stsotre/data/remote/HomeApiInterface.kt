@@ -1,6 +1,12 @@
 package com.example.stsotre.data.remote
 
+import com.example.stsotre.data.model.ResponseResult
+import com.example.stsotre.data.model.home.Slider
+import retrofit2.Response
+import retrofit2.http.GET
+
 interface HomeApiInterface {
 
-    //TODO api calls
+    @GET("v1/getSlider")
+    suspend fun getSlider() : Response<ResponseResult<List<Slider>>>
 }
