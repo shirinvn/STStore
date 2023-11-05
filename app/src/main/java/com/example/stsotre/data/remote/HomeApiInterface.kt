@@ -1,6 +1,6 @@
 package com.example.stsotre.data.remote
 
-interface ApiInterFace {
+interface HomeApiInterface {
 
     //TODO api calls
 }
