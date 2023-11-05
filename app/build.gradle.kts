@@ -1,9 +1,15 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
+
+
+
+
 android {
     namespace = "com.example.stsotre"
     compileSdk = 34
@@ -14,6 +20,8 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        android.buildFeatures.buildConfig = true
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

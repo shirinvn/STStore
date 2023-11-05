@@ -1,8 +1,10 @@
 package com.example.stsotre.di
 
 import com.example.stsotre.data.remote.HomeApiInterface
+import com.example.stsotre.util.Constants.API_KEY
 import com.example.stsotre.util.Constants.BASE_URL
 import com.example.stsotre.util.Constants.TIME_OUT_IN_SECOUND
+import com.example.stsotre.util.Constants.USER_LANGUAGE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +36,12 @@ object NetWorkModule {
         .connectTimeout(TIME_OUT_IN_SECOUND, TimeUnit.SECONDS)
         .readTimeout(TIME_OUT_IN_SECOUND, TimeUnit.SECONDS)
         .writeTimeout(TIME_OUT_IN_SECOUND, TimeUnit.SECONDS)
+        .addInterceptor{chain->
+            val request = chain.request().newBuilder()
+                .addHeader("x-api-key", API_KEY)
+                .addHeader("lang", USER_LANGUAGE)
+            chain.proceed(request.build())
+        }
         .addInterceptor(interceptor())
         .build()
 
