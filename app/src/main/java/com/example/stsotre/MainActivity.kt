@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.stsotre.nav.BottomNavBar
 import com.example.stsotre.ui.component.AppConfig
+import com.example.stsotre.ui.component.ChangeStatusBarColor
 import com.example.stsotre.ui.theme.STStoreTheme
 import com.example.stsotre.util.Constants.ENGLISH
 import com.example.stsotre.util.Constants.PERSION
@@ -33,6 +34,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             STStoreTheme {
                 navController = rememberNavController()
+                ChangeStatusBarColor(navController)
                 AppConfig()
 
                 Log.e("3636", USER_LANGUAGE)
