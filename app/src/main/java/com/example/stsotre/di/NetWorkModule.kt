@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -21,10 +22,19 @@ object NetWorkModule {
 
     @Provides
     @Singleton
+    internal fun interceptor() : HttpLoggingInterceptor{
+        val logging =HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return logging
+    }
+
+    @Provides
+    @Singleton
     fun provideOkHttp() : OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(TIME_OUT_IN_SECOUND,TimeUnit.SECONDS)
         .readTimeout(TIME_OUT_IN_SECOUND,TimeUnit.SECONDS)
         .writeTimeout(TIME_OUT_IN_SECOUND,TimeUnit.SECONDS)
+        .addInterceptor(interceptor())
         .build()
 
     @Provides
