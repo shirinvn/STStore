@@ -9,4 +9,5 @@ interface HomeApiInterface {
 
     @GET("v1/getSlider")
     suspend fun getSlider() : Response<ResponseResult<List<Slider>>>
+
 }

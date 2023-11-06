@@ -24,46 +24,49 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun HomeScreen (navController: NavHostController){
-
+fun HomeScreen(navController: NavHostController) {
     Home(navController)
-
-
 }
 
-
 @Composable
-fun Home(navController: NavHostController
-, viewmodel :HomeViewModel = hiltViewModel()){
+fun Home(
+    navController: NavHostController,
+    viewModel: HomeViewModel = hiltViewModel()
+) {
+    Column(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxSize()
+    ) {
 
-    Column (modifier = Modifier
-        .background(Color.White)
-        .fillMaxSize()
-    ){
 
         val refreshScope = rememberCoroutineScope()
         val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = false)
-        SwipeRefresh(state = swipeRefreshState, onRefresh = {
-            refreshScope.launch {
-                Log.e("3636", "swipeRefresh")
-            }
-        }) {
+        SwipeRefresh(
+            state = swipeRefreshState,
+            onRefresh = {
+                refreshScope.launch {
+                    Log.e("3636", "swipeRefresh")
+                }
+            }) {
+            Column(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(bottom = 60.dp)
+            ) {
 
-
-            Column (modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(bottom = 60.dp)
-            ){
-                LaunchedEffect(true){
-                    viewmodel.getSlider()
+                LaunchedEffect(true) {
+                    viewModel.getSlider()
                 }
 
+                SearchBarSection()
                 TopSlider()
+
             }
+
         }
 
     }
-
 }

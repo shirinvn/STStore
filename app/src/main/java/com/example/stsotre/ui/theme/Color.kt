@@ -22,3 +22,7 @@ val Colors.selectedBar : Color
 val Colors.unselectedBar : Color
     @Composable
     get() =if (isLight) Color(0xFF686464) else Color(0xFFCFD4DA)
+
+val Colors.searchBarBg : Color
+    @Composable
+    get() =if (isLight) Color(0xFFF1F0EE) else Color(0xFF303235)
