@@ -33,13 +33,15 @@ fun RoundedIconBox (
     image:Painter,
     bgColor: Color= Color.Transparent,
     onClick: () -> Unit
+
 ){
 
 
     Column (modifier = Modifier
         .width(80.dp)
-        .clickable { onClick },
-        horizontalAlignment = Alignment.CenterHorizontally){
+        .clickable {
+        onClick()
+    }, horizontalAlignment = Alignment.CenterHorizontally){
 
         Box(modifier = Modifier
             .clip(LocalShape.current.biggermedium)

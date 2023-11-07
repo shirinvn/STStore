@@ -2,14 +2,17 @@ package com.example.stsotre
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.stsotre.nav.Screen
 import com.example.stsotre.ui.screens.BasketScreen
 import com.example.stsotre.ui.screens.CategoryScreen
 import com.example.stsotre.ui.screens.home.HomeScreen
 import com.example.stsotre.ui.screens.ProfileScreen
 import com.example.stsotre.ui.screens.SplashScreen
+import com.example.stsotre.ui.screens.home.WebPageScreen
 
 
 @Composable
@@ -38,6 +41,21 @@ fun SetUpNavGraph(navController: NavHostController){
         composable(route = Screen.Profile.route){
             ProfileScreen(navController = navController)
         }
+
+
+
+
+   composable(route = Screen.WebView.route+"?url={url}",
+      arguments = listOf(navArgument("url"){
+          type= NavType.StringType
+          defaultValue =""
+          nullable= true
+      })){
+       val url = it.arguments?.getString("url")
+       url?.let {
+           WebPageScreen(navController = navController, url = url)
+       }
+   }
 
 
     }

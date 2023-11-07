@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -21,8 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.stsotre.R
 import com.example.stsotre.ui.theme.selectedBar
 import com.example.stsotre.ui.theme.unselectedBar
-
-
+import com.example.stsotre.util.Constants
+import com.example.stsotre.util.LocalUtils
 
 
 @Composable
@@ -32,6 +33,7 @@ fun BottomNavBar(
     onItemClick: (BottomNavItem)-> Unit
 
 ){
+    LocalUtils.setLocale(LocalContext.current, Constants.USER_LANGUAGE)
 
 
 
