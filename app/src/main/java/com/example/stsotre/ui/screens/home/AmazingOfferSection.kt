@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -63,19 +64,11 @@ fun AmazingOfferSection(
 
                     AmazingOfferCard(R.drawable.amazings, R.drawable.box)
                 }
-                item {
-                    AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-
-                }
 
 
-                item {
+                items(amazingItemList){item->
 
-                    AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-                }
-                item {
-                    AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-
+                    AmazingItem(item = item)
                 }
                 item {
                    AmazingShowMoreItem()
