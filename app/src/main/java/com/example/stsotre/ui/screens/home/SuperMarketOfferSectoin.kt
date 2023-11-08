@@ -18,15 +18,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.stsotre.R
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.data.remote.NetWorkResult
+import com.example.stsotre.ui.theme.DigiKalaLightGreen
 import com.example.stsotre.ui.theme.DigiKalaRed
 import com.example.stsotre.viewmodel.HomeViewModel
 
-
 @Composable
-fun AmazingOfferSection(
-    viewModel: HomeViewModel= hiltViewModel()
-){
-    var amazingItemList by remember {
+fun SuperMarketOfferSectoin(viewModel: HomeViewModel = hiltViewModel()){
+
+    var supermarketItemList by remember {
         mutableStateOf<List<AmazingItem>>(emptyList())
     }
 
@@ -35,17 +34,17 @@ fun AmazingOfferSection(
         mutableStateOf(false)
     }
 
-    val amazingItemResult by viewModel.amazingItems.collectAsState()
+    val superMarketItemResult by viewModel.superMarketItems.collectAsState()
 
-    when (amazingItemResult) {
+    when (superMarketItemResult) {
         is NetWorkResult.Success -> {
-            amazingItemList = amazingItemResult.data ?: emptyList()
+            supermarketItemList = superMarketItemResult.data ?: emptyList()
             loading = false
-            Log.e("3636", "item : ${amazingItemList[0].name}")
         }
 
         is NetWorkResult.Error -> {
             loading = false
+            Log.e("3636", "superMarketOffer Section Error : ${superMarketItemResult.message}")
         }
 
         is NetWorkResult.Loading -> {
@@ -53,28 +52,24 @@ fun AmazingOfferSection(
         }
     }
 
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colors.DigiKalaRed)) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .background(MaterialTheme.colors.DigiKalaLightGreen)) {
 
-            LazyRow(modifier =  Modifier.background(MaterialTheme.colors.DigiKalaRed)){
+        LazyRow(modifier =  Modifier.background(MaterialTheme.colors.DigiKalaRed)){
 
-                item {
+            item {
 
-                    AmazingOfferCard(R.drawable.amazings, R.drawable.box)
-                }
-
-
-                items(amazingItemList){item->
-
-                    AmazingItem(item = item)
-                }
-                item {
-                   AmazingShowMoreItem()
-
-                }
+                AmazingOfferCard(R.drawable.supermarketamazings, R.drawable.fresh)
+            }
 
 
+            items(supermarketItemList){item->
+
+                AmazingItem(item = item)
+            }
+            item {
+                AmazingShowMoreItem()
 
             }
 
@@ -83,7 +78,9 @@ fun AmazingOfferSection(
         }
 
 
+
     }
 
 
 
+}
