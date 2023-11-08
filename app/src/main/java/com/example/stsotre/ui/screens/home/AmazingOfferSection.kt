@@ -53,7 +53,7 @@ fun AmazingOfferSection(
         }
     }
 
-        Column(modifier =  Modifier
+        Column(modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colors.DigiKalaRed)) {
 
@@ -75,6 +75,10 @@ fun AmazingOfferSection(
                 }
                 item {
                     AmazingOfferCard(R.drawable.amazings, R.drawable.box)
+
+                }
+                item {
+                   AmazingShowMoreItem()
 
                 }
 
