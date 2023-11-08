@@ -42,4 +42,16 @@ object DigitHelper {
         val presianDigit= digitByLocate(pricewithoutCommas)
         return digitBySeparator(presianDigit)
     }
+
+    fun applyDiscount(price: Long, discountPercent :Int): Long{
+
+        return if (discountPercent>0 ){
+            val discountAmount= (price * discountPercent) / 100
+            price- discountAmount
+
+        }else{
+            price
+        }
+    }
 }
+
