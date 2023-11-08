@@ -17,6 +17,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val slider = MutableStateFlow<NetWorkResult<List<Slider>>>(NetWorkResult.Loading())
     val amazingItems = MutableStateFlow<NetWorkResult<List<AmazingItem>>>(NetWorkResult.Loading())
     val superMarketItems = MutableStateFlow<NetWorkResult<List<AmazingItem>>>(NetWorkResult.Loading())
+    val banners = MutableStateFlow<NetWorkResult<List<Slider>>>(NetWorkResult.Loading())
 
 
   suspend fun getAllDataFromServer(){
@@ -35,6 +36,11 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
           launch {
               superMarketItems.emit(repository.getSuperMarketAmazingProducts())
+
+          }
+
+          launch {
+              banners.emit(repository.getProposalBanner())
 
           }
       }

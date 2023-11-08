@@ -28,4 +28,8 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
         }
 
 
+    suspend fun getProposalBanner(): NetWorkResult<List<Slider>> =
+        safeApiCall {
+            api.getProposalBanners()
+        }
 }
