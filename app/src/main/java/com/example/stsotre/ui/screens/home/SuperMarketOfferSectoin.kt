@@ -56,7 +56,7 @@ fun SuperMarketOfferSectoin(viewModel: HomeViewModel = hiltViewModel()){
         .fillMaxWidth()
         .background(MaterialTheme.colors.DigiKalaLightGreen)) {
 
-        LazyRow(modifier =  Modifier.background(MaterialTheme.colors.DigiKalaRed)){
+        LazyRow(modifier =  Modifier.background(MaterialTheme.colors.DigiKalaLightGreen)){
 
             item {
 
