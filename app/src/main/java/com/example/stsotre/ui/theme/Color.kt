@@ -40,3 +40,7 @@ val Colors.amber : Color
 val Colors.grayCategory : Color
     @Composable
     get() = Color(0xFFF1F0EE)
+
+val Colors.DigiKalaRed : Color
+    @Composable
+    get() = Color(0xffef4056)
