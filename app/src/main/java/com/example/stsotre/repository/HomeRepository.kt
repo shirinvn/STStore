@@ -1,6 +1,7 @@
 package com.example.stsotre.repository
 
 import com.example.stsotre.data.model.home.AmazingItem
+import com.example.stsotre.data.model.home.MainCategory
 import com.example.stsotre.data.model.home.Slider
 import com.example.stsotre.data.remote.BaseApiResponse
 import com.example.stsotre.data.remote.HomeApiInterface
@@ -31,5 +32,10 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
     suspend fun getProposalBanner(): NetWorkResult<List<Slider>> =
         safeApiCall {
             api.getProposalBanners()
+        }
+
+    suspend fun getCategories(): NetWorkResult<List<MainCategory>> =
+        safeApiCall {
+            api.getCategories()
         }
 }

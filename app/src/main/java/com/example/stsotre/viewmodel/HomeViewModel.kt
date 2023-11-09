@@ -3,6 +3,7 @@ package com.example.stsotre.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stsotre.data.model.home.AmazingItem
+import com.example.stsotre.data.model.home.MainCategory
 import com.example.stsotre.data.model.home.Slider
 import com.example.stsotre.data.remote.NetWorkResult
 import com.example.stsotre.repository.HomeRepository
@@ -18,6 +19,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val amazingItems = MutableStateFlow<NetWorkResult<List<AmazingItem>>>(NetWorkResult.Loading())
     val superMarketItems = MutableStateFlow<NetWorkResult<List<AmazingItem>>>(NetWorkResult.Loading())
     val banners = MutableStateFlow<NetWorkResult<List<Slider>>>(NetWorkResult.Loading())
+    val category = MutableStateFlow<NetWorkResult<List<MainCategory>>>(NetWorkResult.Loading())
 
 
   suspend fun getAllDataFromServer(){
@@ -41,6 +43,12 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
           launch {
               banners.emit(repository.getProposalBanner())
+
+          }
+
+
+          launch {
+              category.emit(repository.getCategories())
 
           }
       }
