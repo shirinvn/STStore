@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.data.model.home.MainCategory
 import com.example.stsotre.data.model.home.Slider
+import com.example.stsotre.data.model.home.StoreProduct
 import com.example.stsotre.data.remote.NetWorkResult
 import com.example.stsotre.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +22,8 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val banners = MutableStateFlow<NetWorkResult<List<Slider>>>(NetWorkResult.Loading())
     val category = MutableStateFlow<NetWorkResult<List<MainCategory>>>(NetWorkResult.Loading())
     val centerBannerItems = MutableStateFlow<NetWorkResult<List<Slider>>>(NetWorkResult.Loading())
+    val bestSellerItems = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
+    val mostVisitedItems = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
 
 
   suspend fun getAllDataFromServer(){
@@ -55,6 +58,16 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
           launch {
               centerBannerItems.emit(repository.getCenterBanner())
+
+          }
+
+          launch {
+              bestSellerItems.emit(repository.getBestSellerItem())
+
+          }
+
+          launch {
+              mostVisitedItems.emit(repository.getMostVisitedItem())
 
           }
       }

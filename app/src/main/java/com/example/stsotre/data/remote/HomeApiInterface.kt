@@ -4,6 +4,7 @@ import com.example.stsotre.data.model.ResponseResult
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.data.model.home.MainCategory
 import com.example.stsotre.data.model.home.Slider
+import com.example.stsotre.data.model.home.StoreProduct
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -28,6 +29,11 @@ interface HomeApiInterface {
 
     @GET("v1/getCenterBanner")
     suspend fun getCenterBanner() : Response<ResponseResult<List<Slider>>>
+ @GET("v1/getBestSellerItem")
+    suspend fun getBestSellerItem() : Response<ResponseResult<List<StoreProduct>>>
+
+    @GET("v1/getMostVisitedItems")
+    suspend fun getMostVisitedItems() : Response<ResponseResult<List<StoreProduct>>>
 
 
 }
