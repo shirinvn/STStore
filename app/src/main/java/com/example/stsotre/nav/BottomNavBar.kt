@@ -66,8 +66,6 @@ fun BottomNavBar(
 
     )
 
-
-
     val backStackEntry = navController.currentBackStackEntryAsState()
     val showBottomBar= backStackEntry.value?.destination?.route in items.map { it.route }
 
@@ -102,7 +100,6 @@ fun BottomNavBar(
                            Text(text = item.name
                            , textAlign = TextAlign.Center,
                                style = MaterialTheme.typography.h6)
-
                        }
 
                     }
