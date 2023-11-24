@@ -27,13 +27,16 @@ interface HomeApiInterface {
     @GET("v1/getCategories")
     suspend fun getCategories() : Response<ResponseResult<List<MainCategory>>>
 
-    @GET("v1/getCenterBanner")
+    @GET("v1/getCenterBanners")
     suspend fun getCenterBanner() : Response<ResponseResult<List<Slider>>>
- @GET("v1/getBestSellerItem")
+ @GET("v1/getBestsellerProducts")
     suspend fun getBestSellerItem() : Response<ResponseResult<List<StoreProduct>>>
 
-    @GET("v1/getMostVisitedItems")
+    @GET("v1/getMostVisitedProducts")
     suspend fun getMostVisitedItems() : Response<ResponseResult<List<StoreProduct>>>
+
+    @GET("v1/getMostFavoriteProducts")
+    suspend fun getMostFavoriteProducts() : Response<ResponseResult<List<StoreProduct>>>
 
 
 }
