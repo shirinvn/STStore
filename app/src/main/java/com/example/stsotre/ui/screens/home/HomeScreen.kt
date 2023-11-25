@@ -88,6 +88,7 @@ fun SwipeRefreshSection(viewModel: HomeViewModel, navController: NavHostControll
 
 
             item { CenterBannerSection(5) }
+            item { MostDicountedSection() }
 
         }
 

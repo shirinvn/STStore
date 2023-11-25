@@ -57,4 +57,9 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
         safeApiCall {
             api.getMostFavoriteProducts()
         }
+
+    suspend fun getMostDiscountedItems(): NetWorkResult<List<StoreProduct>> =
+        safeApiCall {
+            api.getMostFavoriteProducts()
+        }
 }
