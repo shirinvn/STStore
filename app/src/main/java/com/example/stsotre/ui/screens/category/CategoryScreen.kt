@@ -1,4 +1,4 @@
-package com.example.stsotre.ui.screens
+package com.example.stsotre.ui.screens.category
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
