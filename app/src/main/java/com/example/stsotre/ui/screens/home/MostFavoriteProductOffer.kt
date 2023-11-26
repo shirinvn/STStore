@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -44,6 +45,7 @@ import com.example.stsotre.ui.theme.extraSmall
 import com.example.stsotre.ui.theme.roundedShape
 import com.example.stsotre.ui.theme.semiDarkText
 import com.example.stsotre.ui.theme.spacing
+import com.example.stsotre.util.Constants
 import com.example.stsotre.util.DigitHelper
 
 
@@ -156,7 +158,7 @@ fun MostFavoriteProductOffer(
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                                text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.h6,
                                 fontWeight = FontWeight.Bold,
@@ -176,7 +178,7 @@ fun MostFavoriteProductOffer(
                                 )
 
                                 Icon(
-                                    painter = painterResource(id = R.drawable.toman),
+                                    painter = currentLogoChangeByLanguage(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semilarge)
@@ -201,7 +203,8 @@ fun MostFavoriteProductOffer(
 
             }
             Divider(
-                modifier = Modifier.width(1.dp)
+                modifier = Modifier
+                    .width(1.dp)
                     .padding(start = MaterialTheme.spacing.semimedium)
                     .height(320.dp)
                     .alpha(0.4f),
@@ -210,6 +213,17 @@ fun MostFavoriteProductOffer(
         }
 
 
+
+    }
+
+}
+
+@Composable
+private fun currentLogoChangeByLanguage() : Painter {
+    return  if (Constants.USER_LANGUAGE == Constants.ENGLISH){
+        painterResource(id = R.drawable.dollar)
+    }else{
+        painterResource(id = R.drawable.toman)
 
     }
 
