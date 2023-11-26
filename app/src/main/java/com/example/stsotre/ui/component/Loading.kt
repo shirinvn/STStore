@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.Dp
 
 
 @Composable
-fun OurLoading(height: Dp, isDark: Boolean) {
+fun Loading(height: Dp, isDark: Boolean) {
 
     Column(
         modifier = Modifier

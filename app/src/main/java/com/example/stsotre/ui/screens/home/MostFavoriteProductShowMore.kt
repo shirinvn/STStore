@@ -27,8 +27,7 @@ import com.example.stsotre.ui.theme.spacing
 fun MostFavoriteProductShowMore (){
 
     Column( modifier = Modifier
-        .size(180.dp, 375.dp)
-        .background(Color.White)
+        .size(160.dp, 320.dp)
         .padding(
             end = MaterialTheme.spacing.medium,
             start = MaterialTheme.spacing.semismall,

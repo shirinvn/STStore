@@ -47,7 +47,15 @@ val Colors.grayCategory : Color
 
 val Colors.DigiKalaRed : Color
     @Composable
-    get() = Color(0xffef4056)
+    get() =if (isLight) Color(0xffef4056) else Color(0xFF8D2633)
+val Colors.bottomBar : Color
+    @Composable
+    get() =if (isLight) Color(0xFFFFFFFF) else Color(0xFF303235)
+
+
+val Colors.DigiKalaRedText : Color
+    @Composable
+    get() =if (isLight) Color(0xffef4056) else Color(0xFFFFFFFF)
 val Colors.DigikalaDarkRed : Color
     @Composable
     get() = Color(0xFFe6123d)
@@ -58,4 +66,4 @@ val Colors.DarkCyan : Color
 
 val Colors.DigiKalaLightGreen : Color
     @Composable
-    get() = Color(0xff86bf3c)
+    get() = if (isLight)  Color(0xff86bf3c)else Color(0xFF3A531A)

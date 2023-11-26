@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.stsotre.R
+import com.example.stsotre.ui.theme.bottomBar
 import com.example.stsotre.ui.theme.selectedBar
 import com.example.stsotre.ui.theme.unselectedBar
 import com.example.stsotre.util.Constants
@@ -73,8 +74,8 @@ fun BottomNavBar(
 
     if (showBottomBar){
         BottomNavigation (
-            modifier= modifier,
-            backgroundColor = Color.White,
+            modifier= Modifier.height(60.dp),
+            backgroundColor = MaterialTheme.colors.bottomBar,
             elevation = 5.dp
         ){
 

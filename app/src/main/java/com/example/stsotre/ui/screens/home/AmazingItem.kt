@@ -36,6 +36,7 @@ import com.example.stsotre.R
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.ui.theme.DarkCyan
 import com.example.stsotre.ui.theme.DigiKalaRed
+import com.example.stsotre.ui.theme.DigiKalaRedText
 import com.example.stsotre.ui.theme.DigikalaDarkRed
 import com.example.stsotre.ui.theme.darkText
 import com.example.stsotre.ui.theme.extraSmall
@@ -77,7 +78,7 @@ fun AmazingItem(item: AmazingItem) {
                         .padding(start = MaterialTheme.spacing.small),
                     style = MaterialTheme.typography.extraSmall,
                     fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colors.DigiKalaRed,
+                    color = MaterialTheme.colors.DigiKalaRedText,
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -180,7 +181,7 @@ fun AmazingItem(item: AmazingItem) {
                                 fontWeight = FontWeight.SemiBold,
                             )
 
-                            Image(
+                            Icon(
                                 painter = painterResource(id = R.drawable.toman),
                                 contentDescription = "",
                                 modifier = Modifier
