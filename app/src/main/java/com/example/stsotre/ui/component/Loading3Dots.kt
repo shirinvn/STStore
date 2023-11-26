@@ -13,9 +13,7 @@ import com.example.stsotre.R
 fun Loading3Dots (isDark: Boolean){
     
     if (isDark){
-        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-            R.raw.loading3dotsdark
-        ))
+        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.loading3dotsdark))
         LottieAnimation(composition = composition,
             iterations = LottieConstants.IterateForever)
     }else{
@@ -27,3 +25,5 @@ fun Loading3Dots (isDark: Boolean){
 
     }
 }
+
+
