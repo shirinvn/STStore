@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.stsotre.nav.Screen
-import com.example.stsotre.ui.screens.BasketScreen
+import com.example.stsotre.ui.basket.BasketScreen
 import com.example.stsotre.ui.screens.category.CategoryScreen
 import com.example.stsotre.ui.screens.home.HomeScreen
 import com.example.stsotre.ui.screens.ProfileScreen
