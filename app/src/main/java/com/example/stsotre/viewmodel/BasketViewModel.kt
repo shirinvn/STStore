@@ -10,7 +10,7 @@ import com.example.stsotre.data.model.home.Slider
 import com.example.stsotre.data.model.home.StoreProduct
 import com.example.stsotre.data.remote.CategoryApiInterface
 import com.example.stsotre.data.remote.NetWorkResult
-import com.example.stsotre.repository.BasktetRepository
+import com.example.stsotre.repository.BasketRepository
 import com.example.stsotre.repository.CategoryRepository
 import com.example.stsotre.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +19,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BasketViewModel @Inject constructor(private val repository: BasktetRepository) : ViewModel() {
+class BasketViewModel @Inject constructor(private val repository: BasketRepository) : ViewModel() {
+
+    val suggestedList = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
+     fun getSuggestedItems(){
+        viewModelScope.launch {
+            suggestedList.emit(repository.getSuggestedItem())
+        }
+
+    }
 
 
 
