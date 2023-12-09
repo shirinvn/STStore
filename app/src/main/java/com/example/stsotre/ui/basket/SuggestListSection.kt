@@ -93,7 +93,9 @@ fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
     ) {
 
         for (item in suggestedList) {
-            MostDiscountedCard(item)
+            SuggestionItemCard(item){
+                Log.e("3636", "${it.name} click")
+            }
         }
 
     }
