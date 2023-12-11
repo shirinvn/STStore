@@ -91,7 +91,7 @@ fun SuggestionItemCard(
                             .padding(
                                 MaterialTheme.spacing.small
                             ),
-                        horizontalAlignment = Alignment.Start,
+                        horizontalAlignment = Alignment.ِAlignment.End,
                         verticalArrangement = Arrangement.Center
                     ) {
                         Surface(
