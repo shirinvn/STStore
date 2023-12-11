@@ -2,7 +2,7 @@ package com.example.stsotre.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.stsotre.data.db.DigiKalaDataBase
+import com.example.stsotre.data.db.DigitKalaDataBase
 import com.example.stsotre.util.Constants.DIGI_KALA_DB
 import dagger.Module
 import dagger.Provides
@@ -21,7 +21,7 @@ object DataBaseModule {
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(
         context = context,
-        DigiKalaDataBase::class.java,
+        DigitKalaDataBase::class.java,
         DIGI_KALA_DB
     ).build()
 }

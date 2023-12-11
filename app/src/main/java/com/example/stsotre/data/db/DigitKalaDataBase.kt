@@ -7,6 +7,6 @@ import com.example.stsotre.data.model.basket.CartItem
 
 @Database(entities = [CartItem::class], version = 1, exportSchema = false)
 
-abstract class DigiKalaDataBase: RoomDatabase() {
+abstract class DigitKalaDataBase: RoomDatabase() {
     abstract fun cartDao ( ): CartDao
 }

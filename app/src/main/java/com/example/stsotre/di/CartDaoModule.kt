@@ -1,7 +1,7 @@
 package com.example.stsotre.di
 
 import com.example.stsotre.data.db.CartDao
-import com.example.stsotre.data.db.DigiKalaDataBase
+import com.example.stsotre.data.db.DigitKalaDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +15,6 @@ object CartDaoModule {
     @Provides
     @Singleton
     fun provideCartDao(
-        dataBase: DigiKalaDataBase
+        dataBase: DigitKalaDataBase
     ): CartDao= dataBase.cartDao()
 }
