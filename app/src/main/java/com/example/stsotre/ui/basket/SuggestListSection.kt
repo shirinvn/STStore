@@ -59,7 +59,7 @@ fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
 
         is NetWorkResult.Error -> {
             loading = false
-            Log.e("3636", "banner Section Error : ${suggestedResult.message}")
+            Log.e("3636", "Suggested List Error : ${suggestedResult.message}")
         }
 
         is NetWorkResult.Loading -> {
@@ -77,7 +77,7 @@ fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
         modifier = Modifier
             .fillMaxWidth()
             .padding(MaterialTheme.spacing.small),
-        text = stringResource(id = R.string.most_discounted_products),
+        text = stringResource(id = R.string.suggestion_for_u),
         textAlign = TextAlign.Right,
         style = MaterialTheme.typography.h3,
         fontWeight = FontWeight.SemiBold,

@@ -66,11 +66,12 @@ fun Basket(
         TabRow(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium)
             ,selectedTabIndex = selectedTabByIndex,
             contentColor = MaterialTheme.colors.DigikalaRed,
+            backgroundColor = Color.White,
             indicator = {
                 line->
                 Box(modifier = Modifier
-                    .height(3.dp)
                     .tabIndicatorOffset(line[selectedTabByIndex])
+                    .height(3.dp)
                     .background(Color.Red)
                 )
             }
@@ -98,8 +99,8 @@ fun Basket(
         }
 
         when(selectedTabByIndex){
-            0 -> ""
-            1 -> ""
+            0 -> ShoppingCart()
+            1 -> NextShoppingCart()
         }
     }
 
