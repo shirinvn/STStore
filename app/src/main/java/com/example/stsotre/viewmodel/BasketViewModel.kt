@@ -3,6 +3,7 @@ package com.example.stsotre.viewmodel
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.stsotre.data.model.basket.CartItem
 import com.example.stsotre.data.model.category.SubCategory
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.data.model.home.MainCategory
@@ -14,6 +15,7 @@ import com.example.stsotre.repository.BasketRepository
 import com.example.stsotre.repository.CategoryRepository
 import com.example.stsotre.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,6 +32,11 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
     }
 
 
+    fun insertCartItem(cart : CartItem){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertCartItem(cart = cart)
+        }
+    }
 
 
 }

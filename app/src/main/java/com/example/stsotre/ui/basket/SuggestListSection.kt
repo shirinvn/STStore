@@ -24,6 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.stsotre.R
+import com.example.stsotre.data.model.basket.CartItem
+import com.example.stsotre.data.model.basket.CartStatus
 import com.example.stsotre.data.model.home.MainCategory
 import com.example.stsotre.data.model.home.StoreProduct
 import com.example.stsotre.data.remote.NetWorkResult
@@ -94,7 +96,18 @@ fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
 
         for (item in suggestedList) {
             SuggestionItemCard(item){
-                Log.e("3636", "${it.name} click")
+                viewModel.insertCartItem(
+                    CartItem(
+                        it._id,
+                        it.name,
+                        it.seller,
+                        it.price,
+                        it.discountPercent,
+                        it.image,
+                        1,
+                        CartStatus.CURRENT_CART
+                    )
+                )
             }
         }
 
