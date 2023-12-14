@@ -2,6 +2,7 @@ package com.example.stsotre.repository
 
 import com.example.stsotre.data.db.CartDao
 import com.example.stsotre.data.model.basket.CartItem
+import com.example.stsotre.data.model.basket.CartStatus
 import com.example.stsotre.data.model.category.SubCategory
 import com.example.stsotre.data.model.home.StoreProduct
 import com.example.stsotre.data.remote.BaseApiResponse
@@ -15,6 +16,7 @@ class BasketRepository @Inject constructor(
     private val cartDao:CartDao
 
 ) : BaseApiResponse() {
+    val currentCartItems= cartDao.getAllItems(CartStatus.CURRENT_CART)
 
 
 suspend fun getSuggestedItem(): NetWorkResult<List<StoreProduct>> = safeApiCall {

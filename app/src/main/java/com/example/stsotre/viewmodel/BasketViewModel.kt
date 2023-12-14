@@ -16,6 +16,7 @@ import com.example.stsotre.repository.CategoryRepository
 import com.example.stsotre.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +25,8 @@ import javax.inject.Inject
 class BasketViewModel @Inject constructor(private val repository: BasketRepository) : ViewModel() {
 
     val suggestedList = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
+
+    val currentCartItem : Flow<List<CartItem>> = repository.currentCartItems
      fun getSuggestedItems(){
         viewModelScope.launch {
             suggestedList.emit(repository.getSuggestedItem())
