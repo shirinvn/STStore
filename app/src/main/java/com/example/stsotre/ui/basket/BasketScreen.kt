@@ -98,6 +98,13 @@ fun Basket(
 
         }
 
+        Row (modifier = Modifier.fillMaxSize()
+            .padding(MaterialTheme.spacing.medium),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween ){
+
+        }
+
         when(selectedTabByIndex){
             0 -> ShoppingCart()
             1 -> NextShoppingCart()
