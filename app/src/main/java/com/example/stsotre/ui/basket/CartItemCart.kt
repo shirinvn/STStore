@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -20,13 +21,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.stsotre.R
 import com.example.stsotre.data.model.basket.CartItem
 import com.example.stsotre.ui.theme.darkText
+import com.example.stsotre.ui.theme.semiDarkText
 import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.util.DigitHelper.digitByLocateAndSeparator
 
@@ -84,10 +89,43 @@ fun CartItemCard(
                         modifier=Modifier.padding(vertical = MaterialTheme.spacing.extraSmall)
                         )
 
+
+                    DetailRow(icon = painterResource(id = R.drawable.empty_cart),
+
+                        text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
+                    MaterialTheme.colors.darkText)
+
                 }
 
             }
         }
 
     }
+}
+
+@Composable
+fun DetailRow(
+    icon: Painter,
+    text: String,
+    color: Color
+){
+
+
+
+
+    Row (modifier = Modifier.padding(vertical = MaterialTheme.spacing.extraSmall)){
+
+        Icon(painter = icon, contentDescription = "",
+            modifier=Modifier.size(18.dp)
+        , tint = color)
+        Spacer(modifier = Modifier.width(MaterialTheme.spacing.semilarge))
+
+Text(text = text,
+    style = MaterialTheme.typography.h6,
+    fontWeight = FontWeight.SemiBold,
+    color= MaterialTheme.colors.semiDarkText
+)
+    }
+
+
 }
