@@ -118,6 +118,20 @@ fun CartItemCard(
                         text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
                     MaterialTheme.colors.darkText)
 
+                    DetailRow(icon = painterResource(id = R.drawable.empty_cart),
+                        text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
+                    MaterialTheme.colors.darkText)
+
+
+                    DetailRow(icon = painterResource(id = R.drawable.empty_cart),
+                        text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
+                    MaterialTheme.colors.darkText)
+
+
+                    DetailRow(icon = painterResource(id = R.drawable.empty_cart),
+                        text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
+                    MaterialTheme.colors.darkText)
+
 
                     DetailRow(icon = painterResource(id = R.drawable.empty_cart),
                         text ="کالای شما غاونه هسا کع دو نیشعه عز کذدز " , color =
