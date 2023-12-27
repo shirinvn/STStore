@@ -2,6 +2,7 @@ package com.example.stsotre.ui.basket
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -51,7 +54,13 @@ import com.example.stsotre.util.DigitHelper.digitByLocateAndSeparator
 @Composable
 fun CartItemCard(
     item: CartItem
+
 ){
+
+
+    val count= remember {
+        mutableStateOf(item.count)
+    }
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -79,7 +88,7 @@ fun CartItemCard(
                         color = MaterialTheme.colors.darkText
                     )
                     Text(
-                        text = "${digitByLocateAndSeparator("1")}  کالا",
+                        text = "${digitByLocateAndSeparator(count.value.toString())}  کالا",
                         style = MaterialTheme.typography.h6,
                         color = Color.Gray
                     )
@@ -249,8 +258,13 @@ fun CartItemCard(
 
                         Icon(painter = painterResource(id = R.drawable.ic_increase_24),
                             contentDescription =null,
-                            tint = MaterialTheme.colors.DigiKalaRed)
-                        Text(text = digitByLocateAndSeparator(item.count.toString()),
+                            tint = MaterialTheme.colors.DigiKalaRed,
+                            modifier = Modifier.clickable {
+                                count.value ++
+                            })
+
+
+                        Text(text = digitByLocateAndSeparator(count.value.toString()),
                             style = MaterialTheme.typography.body2,
                             fontWeight = FontWeight.SemiBold,
                             color= MaterialTheme.colors.DigiKalaRed,
@@ -259,9 +273,21 @@ fun CartItemCard(
                             )
                         )
 
-                        Icon(painter = painterResource(id = R.drawable.ic_decrease_24),
-                            contentDescription =null,
-                            tint = MaterialTheme.colors.DigiKalaRed)
+                        if (count.value==1){
+                            Icon(painter = painterResource(id = R.drawable.digi_cancel),
+                                contentDescription =null,
+                                tint = MaterialTheme.colors.DigiKalaRed)
+                        }
+                        else{
+                            Icon(painter = painterResource(id = R.drawable.ic_decrease_24),
+                                contentDescription =null,
+                                tint = MaterialTheme.colors.DigiKalaRed,
+                                modifier = Modifier.clickable {
+                                    count.value --
+                                })
+
+                        }
+
                     }
 
                 }
@@ -279,7 +305,8 @@ fun CartItemCard(
 
                     Icon(painter = painterResource(id = R.drawable.toman)
                         , contentDescription = null,
-                        modifier= Modifier.size(24.dp)
+                        modifier= Modifier
+                            .size(24.dp)
                             .padding(MaterialTheme.spacing.extraSmall))
                 }
 
