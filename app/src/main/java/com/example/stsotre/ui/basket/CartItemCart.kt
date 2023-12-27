@@ -1,6 +1,7 @@
 package com.example.stsotre.ui.basket
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -23,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -39,6 +42,7 @@ import com.example.stsotre.ui.theme.DigiKalaLightGreen
 import com.example.stsotre.ui.theme.DigiKalaRed
 import com.example.stsotre.ui.theme.darkText
 import com.example.stsotre.ui.theme.extraSmall
+import com.example.stsotre.ui.theme.roundedShape
 import com.example.stsotre.ui.theme.semiDarkText
 import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.ui.theme.veryExtraSmall
@@ -221,6 +225,64 @@ fun CartItemCard(
 
 
                 }
+            }
+
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
+
+            Row (modifier = Modifier.align(Alignment.Start),
+                verticalAlignment = Alignment.CenterVertically){
+
+                Surface (
+                    modifier = Modifier
+                        .clip(MaterialTheme.roundedShape.semismall)
+                        .border(
+                            1.dp,
+                            Color.LightGray.copy(0.6f),
+                            MaterialTheme.roundedShape.semismall
+                        )
+                ){
+                    Row (modifier=Modifier.padding(
+                        horizontal = MaterialTheme.spacing.small,
+                        vertical = MaterialTheme.spacing.extraSmall
+                    ),
+                        verticalAlignment = Alignment.CenterVertically){
+
+                        Icon(painter = painterResource(id = R.drawable.ic_increase_24),
+                            contentDescription =null,
+                            tint = MaterialTheme.colors.DigiKalaRed)
+                        Text(text = digitByLocateAndSeparator(item.count.toString()),
+                            style = MaterialTheme.typography.body2,
+                            fontWeight = FontWeight.SemiBold,
+                            color= MaterialTheme.colors.DigiKalaRed,
+                            modifier = Modifier.padding(
+                                horizontal = MaterialTheme.spacing.medium
+                            )
+                        )
+
+                        Icon(painter = painterResource(id = R.drawable.ic_decrease_24),
+                            contentDescription =null,
+                            tint = MaterialTheme.colors.DigiKalaRed)
+                    }
+
+                }
+
+
+                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.semimedium))
+
+                Row {
+
+                    Text(text = digitByLocateAndSeparator(item.price.toString()),
+                        style = MaterialTheme.typography.h3,
+                        fontWeight = FontWeight.SemiBold,
+                        color= MaterialTheme.colors.darkText
+                    )
+
+                    Icon(painter = painterResource(id = R.drawable.toman)
+                        , contentDescription = null,
+                        modifier= Modifier.size(24.dp)
+                            .padding(MaterialTheme.spacing.extraSmall))
+                }
+
             }
 
         }
