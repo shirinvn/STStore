@@ -203,7 +203,7 @@ fun CartItemCard(
 
                             DetailRow(
                                 painterResource(id = R.drawable.k1),
-                                stringResource(id = R.string.digikala_send),
+                                stringResource(id = R.string.digi_send),
                                 color = MaterialTheme.colors.DigiKalaRed,
                                 fontStyle = MaterialTheme.typography.veryExtraSmall
                             )

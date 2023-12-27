@@ -28,8 +28,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.stsotre.R
+import com.example.stsotre.ui.theme.DigiKalaRed
 import com.example.stsotre.ui.theme.DigikalaRed
 import com.example.stsotre.ui.theme.selectedBar
 import com.example.stsotre.ui.theme.spacing
@@ -47,70 +49,64 @@ fun BasketScreen (navController: NavHostController){
 
 @Composable
 fun Basket(
-    navController: NavHostController,
-    viewModel: BasketViewModel= hiltViewModel()
-){
+    navController: NavController,
+    viewModel: BasketViewModel = hiltViewModel()
+) {
 
-    var selectedTabByIndex by remember {
+
+    var selectedTabIndex by remember {
         mutableStateOf(0)
-
     }
-    val tabTitles= listOf(
+    val tabTitles = listOf(
         stringResource(id = R.string.cart),
         stringResource(id = R.string.next_cart_list)
-
     )
 
     Column {
 
-        TabRow(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium)
-            ,selectedTabIndex = selectedTabByIndex,
-            contentColor = MaterialTheme.colors.DigikalaRed,
+        TabRow(
+            modifier = Modifier
+                .padding(horizontal = MaterialTheme.spacing.medium),
+            selectedTabIndex = selectedTabIndex,
+            contentColor = MaterialTheme.colors.DigiKalaRed,
             backgroundColor = Color.White,
-            indicator = {
-                line->
-                Box(modifier = Modifier
-                    .tabIndicatorOffset(line[selectedTabByIndex])
-                    .height(3.dp)
-                    .background(Color.Red)
+            indicator = { line ->
+                Box(
+                    modifier = Modifier
+                        .tabIndicatorOffset(line[selectedTabIndex])
+                        .height(3.dp)
+                        .background(Color.Red)
+
                 )
             }
         ) {
-            tabTitles.forEachIndexed{
-                index, title ->
+            tabTitles.forEachIndexed { index, title ->
                 Tab(
-                    selected = (selectedTabByIndex== index),
+                    selected = (selectedTabIndex == index),
                     onClick = {
-                        selectedTabByIndex= index
+                        selectedTabIndex = index
                     },
-                    selectedContentColor = MaterialTheme.colors.DigikalaRed,
+                    selectedContentColor = MaterialTheme.colors.DigiKalaRed,
                     unselectedContentColor = Color.Gray,
                     text = {
                         Row {
-                            Text(text = title,
+                            Text(
+                                text = title,
                                 style = MaterialTheme.typography.h6,
-                                fontWeight = FontWeight.SemiBold
+                                fontWeight = FontWeight.SemiBold,
                             )
                         }
                     }
                 )
             }
-
         }
 
-        Row (modifier = Modifier.fillMaxSize()
-            .padding(MaterialTheme.spacing.medium),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween ){
-
-        }
-
-        when(selectedTabByIndex){
+        when (selectedTabIndex) {
             0 -> ShoppingCart()
             1 -> NextShoppingCart()
         }
-    }
 
+    }
 
 }
 
