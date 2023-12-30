@@ -21,6 +21,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -310,6 +311,22 @@ fun CartItemCard(
                             .padding(MaterialTheme.spacing.extraSmall))
                 }
 
+            }
+
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
+
+            Row (modifier = Modifier.fillMaxWidth()
+                ,
+                horizontalArrangement = Arrangement.End
+                ,verticalAlignment = Alignment.CenterVertically){
+                Text(text = stringResource(id = R.string.saveToNextList),
+                    fontWeight = FontWeight.Light,
+                    style = MaterialTheme.typography.h6,
+                    color= MaterialTheme.colors.DarkCyan
+                )
+
+                Icon(imageVector = Icons.Filled.KeyboardArrowLeft, contentDescription =null,
+                    tint = MaterialTheme.colors.DarkCyan)
             }
 
         }

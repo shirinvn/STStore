@@ -1,6 +1,7 @@
 package com.example.stsotre.data.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -17,4 +18,16 @@ interface CartDao {
 
     @Query("select * from `shopping cart table` where cartStatus=:status")
     fun getAllItems(status: CartStatus): Flow<List<CartItem>>
+
+
+    @Delete
+    suspend fun  removeFromCart(item: CartItem)
+
+    @Query("update `shopping cart table` set count=:newCount where itemId=:id")
+    suspend fun changeCartCountItem(id: String, newCount: Int)
+
+
+
+    @Query("update `shopping cart table` set cartStatus=:newCountStatus where itemId=:id")
+    suspend fun changeStatusCart(id: String, newCartStatus: Int)
 }

@@ -20,6 +20,7 @@ import com.example.stsotre.util.Constants.PERSION
 import com.example.stsotre.util.Constants.USER_LANGUAGE
 import com.example.stsotre.util.LocalUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.StringBuilder
 
 
 @AndroidEntryPoint
@@ -62,9 +63,23 @@ class MainActivity : ComponentActivity() {
                 }
 
 
+
+
             }
+
+        }
+
+    }
+    companion object{
+        fun reverseString(input: String): String{
+
+            return input.reversed()
         }
     }
+
+
 }
+
+
 
 
