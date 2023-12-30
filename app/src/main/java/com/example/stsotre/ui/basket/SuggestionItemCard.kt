@@ -52,9 +52,10 @@ import com.example.stsotre.util.DigitHelper
 
 @Composable
 fun SuggestionItemCard(
-    item:StoreProduct,
-    onAddClick :(StoreProduct) -> Unit
-){
+    item: StoreProduct,
+    onAddClick: (StoreProduct) -> Unit
+) {
+
     Card(
         modifier = Modifier
             .fillMaxWidth(0.5f),
@@ -73,9 +74,7 @@ fun SuggestionItemCard(
                     .padding(vertical = MaterialTheme.spacing.extraSmall)
             ) {
 
-
-                Box{
-
+                Box {
                     Image(
                         painter = rememberAsyncImagePainter(item.image),
                         contentDescription = "",
@@ -84,33 +83,37 @@ fun SuggestionItemCard(
                             .height(130.dp),
                         contentScale = ContentScale.Fit
                     )
+
                     Column(
-                        modifier= Modifier
-                            .fillMaxWidth()
+                        modifier = Modifier
                             .align(Alignment.BottomStart)
-                            .padding(
-                                MaterialTheme.spacing.small
-                            ),
+                            .fillMaxWidth()
+                            .padding(MaterialTheme.spacing.small),
+
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.Center
                     ) {
+
+
                         Surface(
                             modifier = Modifier
                                 .padding(MaterialTheme.spacing.extraSmall)
                                 .size(26.dp)
                                 .clip(CircleShape)
-                                .border(1.dp, MaterialTheme.colors.DigikalaDarkRed, CircleShape)
-                                .clickable {
+                                .border(1.dp, MaterialTheme.colors.DigikalaRed, CircleShape)
+                                .clickable{
                                     onAddClick(item)
                                 }
                         ) {
-                            Icon(imageVector = Icons.Default.Add, contentDescription = ""
-                                , tint = MaterialTheme.colors.DigikalaRed)
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "",
+                                tint = MaterialTheme.colors.DigikalaRed
+                            )
                         }
 
 
                     }
-
                 }
 
 
@@ -200,14 +203,15 @@ fun SuggestionItemCard(
                         Row {
                             Text(
                                 text = DigitHelper.digitByLocateAndSeparator(
-                                    DigitHelper.applyDiscount(item.price , item.discountPercent)
-                                        .toString()),
+                                    DigitHelper.applyDiscount(item.price, item.discountPercent)
+                                        .toString()
+                                ),
                                 style = MaterialTheme.typography.body2,
                                 fontWeight = FontWeight.SemiBold,
                             )
 
                             Icon(
-                                painter = currentLogoChangeByLanguage(),
+                                painter = currencyLogoChangeByLanguage(),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(MaterialTheme.spacing.semilarge)
@@ -234,16 +238,13 @@ fun SuggestionItemCard(
 
 
     }
-
-
 }
+
 @Composable
-private fun currentLogoChangeByLanguage() : Painter {
-    return  if (Constants.USER_LANGUAGE == Constants.ENGLISH){
+private fun currencyLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH) {
         painterResource(id = R.drawable.dollar)
-    }else{
+    } else {
         painterResource(id = R.drawable.toman)
-
     }
-
 }

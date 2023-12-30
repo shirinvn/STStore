@@ -38,11 +38,10 @@ fun ShoppingCart(
         .padding(bottom = 60.dp)){
 
         if (currentCartItem.value.isEmpty()){
-            item{
-                 EmptyBasketShopping()
-            }
+            item{ EmptyBasketShopping() }
             item { SuggestListSection() }
         }else{
+
             items(currentCartItem.value){item->
                 CartItemCard(item = item)
             }

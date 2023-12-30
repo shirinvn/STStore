@@ -38,50 +38,50 @@ import com.example.stsotre.viewmodel.BasketViewModel
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
+fun SuggestListSection(
+    viewModel: BasketViewModel = hiltViewModel()
+) {
 
 
     viewModel.getSuggestedItems()
+
     var suggestedList by remember {
         mutableStateOf<List<StoreProduct>>(emptyList())
     }
-
-
     var loading by remember {
         mutableStateOf(false)
     }
 
-    val suggestedResult by viewModel.suggestedList.collectAsState()
-
-    when (suggestedResult) {
+    val suggestedItemResult by viewModel.suggestedList.collectAsState()
+    when (suggestedItemResult) {
         is NetWorkResult.Success -> {
-            suggestedList = suggestedResult.data ?: emptyList()
+            suggestedList = suggestedItemResult.data ?: emptyList()
             loading = false
         }
-
         is NetWorkResult.Error -> {
             loading = false
-            Log.e("3636", "Suggested List Error : ${suggestedResult.message}")
+            Log.e("3636", "SuggestListSection error : ${suggestedItemResult.message}")
         }
-
         is NetWorkResult.Loading -> {
             loading = true
         }
     }
 
-    Spacer(modifier = Modifier
-        .fillMaxWidth()
-        .height(MaterialTheme.spacing.small)
-        .background(MaterialTheme.colors.searchBarBg))
 
+    Spacer(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(MaterialTheme.spacing.small)
+            .background(MaterialTheme.colors.searchBarBg)
+    )
 
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(MaterialTheme.spacing.small),
+            .padding(MaterialTheme.spacing.medium),
         text = stringResource(id = R.string.suggestion_for_u),
         textAlign = TextAlign.Right,
-        style = MaterialTheme.typography.h3,
+        style = MaterialTheme.typography.h4,
         fontWeight = FontWeight.SemiBold,
         color = MaterialTheme.colors.darkText,
     )
@@ -112,4 +112,7 @@ fun SuggestListSection (viewModel: BasketViewModel = hiltViewModel()){
         }
 
     }
+
+
+
 }

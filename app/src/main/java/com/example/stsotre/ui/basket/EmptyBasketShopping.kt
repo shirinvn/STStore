@@ -3,6 +3,7 @@ package com.example.stsotre.ui.basket
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -32,15 +33,22 @@ fun EmptyBasketShopping (
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-
-        Image(painter = painterResource(id = R.drawable.empty_cart),
+        Image(
+            painter = painterResource(id = R.drawable.empty_cart),
+            contentDescription = "",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.height(200.dp)
-            , contentDescription = null)
-        Text(text = stringResource(id = R.string.cart_is_empty),
+        )
+
+        Text(
+            text = stringResource(R.string.cart_is_empty),
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.h6,
-            color = MaterialTheme.colors.semiDarkText
+            color = MaterialTheme.colors.semiDarkText,
         )
+        Spacer(
+            modifier = Modifier.height(MaterialTheme.spacing.medium)
+        )
+
     }
 }
