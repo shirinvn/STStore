@@ -28,6 +28,6 @@ interface CartDao {
 
 
 
-    @Query("update `shopping cart table` set cartStatus=:newCountStatus where itemId=:id")
-    suspend fun changeStatusCart(id: String, newCartStatus: Int)
+    @Query("update `shopping cart table` set cartStatus=:newCartStatus where itemId=:id")
+    suspend fun changeStatusCart(id: String, newCartStatus: CartStatus)
 }

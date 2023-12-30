@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stsotre.data.model.basket.CartItem
+import com.example.stsotre.data.model.basket.CartStatus
 import com.example.stsotre.data.model.category.SubCategory
 import com.example.stsotre.data.model.home.AmazingItem
 import com.example.stsotre.data.model.home.MainCategory
@@ -38,6 +39,21 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
     fun insertCartItem(cart : CartItem){
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertCartItem(cart = cart)
+        }
+    }
+
+
+    fun removeCartItem(item : CartItem){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeFromCart(item)
+        }
+    }
+
+
+    fun changeCartItemCount(id :String , newStatus: CartStatus){
+
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.changeCartItemStatus(id, newStatus)
         }
     }
 

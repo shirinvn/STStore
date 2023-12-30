@@ -28,4 +28,19 @@ suspend fun getSuggestedItem(): NetWorkResult<List<StoreProduct>> = safeApiCall 
         cartDao.insertCartItem(cart = cart)
     }
 
+
+
+    suspend fun removeFromCart(cart: CartItem){
+        cartDao.removeFromCart(cart)
+    }
+
+
+    suspend fun changeCartItemStatus(id: String, newCartStatus:CartStatus){
+        cartDao.changeStatusCart(id, newCartStatus )
+    }
+
+    suspend fun changeCartItemCount(id: String, newCount:Int){
+        cartDao.changeCartCountItem(id, newCount )
+    }
+
 }
