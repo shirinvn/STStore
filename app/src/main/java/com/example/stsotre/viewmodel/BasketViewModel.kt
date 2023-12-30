@@ -50,7 +50,15 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
     }
 
 
-    fun changeCartItemCount(id :String , newStatus: CartStatus){
+
+    fun changeCartItemCount(id :String , newStatus: Int){
+
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.changeCartItemCount(id, newStatus)
+        }
+    }
+
+    fun changeCartItemStatus(id :String , newStatus: CartStatus){
 
         viewModelScope.launch(Dispatchers.IO) {
             repository.changeCartItemStatus(id, newStatus)
