@@ -38,6 +38,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.stsotre.R
 import com.example.stsotre.data.model.basket.CartItem
@@ -51,10 +52,12 @@ import com.example.stsotre.ui.theme.semiDarkText
 import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.ui.theme.veryExtraSmall
 import com.example.stsotre.util.DigitHelper.digitByLocateAndSeparator
+import com.example.stsotre.viewmodel.BasketViewModel
 
 @Composable
 fun CartItemCard(
-    item: CartItem
+    item: CartItem,
+    viewModel: BasketViewModel= hiltViewModel()
 
 ){
 
@@ -277,7 +280,10 @@ fun CartItemCard(
                         if (count.value==1){
                             Icon(painter = painterResource(id = R.drawable.digi_cancel),
                                 contentDescription =null,
-                                tint = MaterialTheme.colors.DigiKalaRed)
+                                tint = MaterialTheme.colors.DigiKalaRed,
+                                modifier = Modifier.clickable {
+                                    viewModel.removeCartItem(item)
+                                })
                         }
                         else{
                             Icon(painter = painterResource(id = R.drawable.ic_decrease_24),
