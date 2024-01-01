@@ -42,6 +42,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.stsotre.R
 import com.example.stsotre.data.model.basket.CartItem
+import com.example.stsotre.data.model.basket.CartStatus
 import com.example.stsotre.ui.theme.DarkCyan
 import com.example.stsotre.ui.theme.DigiKalaLightGreen
 import com.example.stsotre.ui.theme.DigiKalaRed
@@ -343,7 +344,10 @@ fun CartItemCard(
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .clickable {
+                               viewModel.changeCartItemStatus(item.itemId, CartStatus.NEXT_CART)
+                    },
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
