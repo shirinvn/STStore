@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.stsotre.data.model.basket.CartItem
+import com.example.stsotre.data.model.basket.CartStatus
 import com.example.stsotre.viewmodel.BasketViewModel
 import kotlinx.coroutines.flow.collectLatest
 
@@ -44,7 +45,7 @@ fun NextShoppingCart(
         }else{
 
             items(nextCartItem.value){item->
-                CartItemCard(item = item)
+                CartItemCard(item = item, CartStatus.NEXT_CART)
             }
         }
 

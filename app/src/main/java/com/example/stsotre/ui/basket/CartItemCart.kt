@@ -60,6 +60,7 @@ import com.example.stsotre.viewmodel.BasketViewModel
 @Composable
 fun CartItemCard(
     item: CartItem,
+    mode: CartStatus,
     viewModel: BasketViewModel = hiltViewModel()
 ) {
 
@@ -276,7 +277,7 @@ fun CartItemCard(
                             tint = MaterialTheme.colors.DigikalaRed,
                             modifier = Modifier.clickable {
                                 count.value++
-                                viewModel.changeCartItemCount(item.itemId , count.value)
+                                viewModel.changeCartItemCount(item.itemId, count.value)
                             }
                         )
 
@@ -306,7 +307,7 @@ fun CartItemCard(
                                 tint = MaterialTheme.colors.DigikalaRed,
                                 modifier = Modifier.clickable {
                                     count.value--
-                                    viewModel.changeCartItemCount(item.itemId , count.value)
+                                    viewModel.changeCartItemCount(item.itemId, count.value)
                                 }
                             )
                         }
@@ -343,26 +344,54 @@ fun CartItemCard(
 
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
 
-            Row(
-                modifier = Modifier.fillMaxWidth()
-                    .clickable {
-                               viewModel.changeCartItemStatus(item.itemId, CartStatus.NEXT_CART)
-                    },
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End
-            ) {
-                Text(
-                    text = stringResource(R.string.saveToNextList),
-                    fontWeight = FontWeight.Light,
-                    style = MaterialTheme.typography.h6,
-                    color = MaterialTheme.colors.DarkCyan
-                )
+            if (mode == CartStatus.CURRENT_CART) {
 
-                Icon(
-                    imageVector = Icons.Filled.KeyboardArrowLeft,
-                    contentDescription = "",
-                    tint = MaterialTheme.colors.DarkCyan
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            viewModel.changeCartItemStatus(item.itemId, CartStatus.NEXT_CART)
+                        },
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    Text(
+                        text = stringResource(R.string.saveToNextList),
+                        fontWeight = FontWeight.Light,
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.DarkCyan
+                    )
+
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowLeft,
+                        contentDescription = "",
+                        tint = MaterialTheme.colors.DarkCyan
+                    )
+                }
+            } else {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            viewModel.changeCartItemStatus(item.itemId, CartStatus.NEXT_CART)
+                        },
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    Text(
+                        text = stringResource(R.string.deleteFromList),
+                        fontWeight = FontWeight.Light,
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.DigikalaRed
+                    )
+
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowLeft,
+                        contentDescription = "",
+                        tint = MaterialTheme.colors.DigikalaRed
+                    )
+                }
+
             }
 
         }
