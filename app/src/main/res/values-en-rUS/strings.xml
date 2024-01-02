@@ -47,6 +47,8 @@
     <string name="fast_send">fast send </string>
     <string name="saveToNextList"> save To Next Shopping List </string>
     <string name="deleteFromList"> delete From List  </string>
+    <string name="next_cart_list_is_empty">next cart list is empty</string>
+    <string name="next_cart_list_is_empty_msg">next cart list is empty</string>
 
 
 

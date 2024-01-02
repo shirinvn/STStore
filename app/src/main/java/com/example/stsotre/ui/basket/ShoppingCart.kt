@@ -50,6 +50,8 @@ fun ShoppingCart(
             items(currentCartItems.value) { item ->
                 CartItemCard(item , CartStatus.CURRENT_CART)
             }
+            item { SuggestListSection() }
+
 
         }
 

@@ -43,8 +43,7 @@ fun NextShoppingCart(
     ) {
 
         if (nextCartItems.value.isEmpty()) {
-            item { EmptyBasketShopping() }
-            item { SuggestListSection() }
+            item { EmptyNextShoppingList() }
         } else {
 
             items(nextCartItems.value) { item ->
