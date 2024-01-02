@@ -45,6 +45,7 @@
     <string name="digikala">digiKala</string>
     <string name="digi_send">digi kala send</string>
     <string name="fast_send">fast send </string>
+    <string name="please_wait">please wait </string>
     <string name="saveToNextList"> save To Next Shopping List </string>
     <string name="deleteFromList"> delete From List  </string>
     <string name="next_cart_list_is_empty">next cart list is empty</string>

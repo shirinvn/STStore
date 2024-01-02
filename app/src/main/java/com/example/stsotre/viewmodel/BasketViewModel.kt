@@ -15,10 +15,13 @@ import com.example.stsotre.data.remote.NetWorkResult
 import com.example.stsotre.repository.BasketRepository
 import com.example.stsotre.repository.CategoryRepository
 import com.example.stsotre.repository.HomeRepository
+import com.example.stsotre.ui.basket.BasketScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +33,18 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
 
     val currentCartItems: Flow<List<CartItem>> = repository.currentCartItems
     val nextCartItems: Flow<List<CartItem>> = repository.nextCartItems
+
+    private val _currentCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>>
+    =MutableStateFlow(BasketScreenState.Loading)
+    val currentCartItem: StateFlow<BasketScreenState<List<CartItem>>> = _currentCartItems
+
+    init {
+        viewModelScope.launch (Dispatchers.IO){
+            repository.currentCartItems.collectLatest {
+                _currentCartItems.emit(BasketScreenState.Success(it))
+            }
+        }
+    }
 
 
     fun getSuggestedItems() {
