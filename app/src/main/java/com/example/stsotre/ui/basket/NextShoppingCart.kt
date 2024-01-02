@@ -21,32 +21,36 @@ import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun NextShoppingCart(
-
     viewModel: BasketViewModel = hiltViewModel()
+) {
 
-){
-    val nextCartItem = remember {
+    val nextCartItems = remember {
         mutableStateOf(emptyList<CartItem>())
     }
-    LaunchedEffect(key1 = true){
-        viewModel.nextCartItem.collectLatest { list->
-            nextCartItem.value =list
+
+    LaunchedEffect(true) {
+        viewModel.nextCartItems.collectLatest { list ->
+            nextCartItems.value = list
         }
     }
 
-    LazyColumn(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-        .padding(bottom = 60.dp)){
 
-        if (nextCartItem.value.isEmpty()){
-            item{ EmptyBasketShopping() }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(bottom = 60.dp),
+    ) {
+
+        if (nextCartItems.value.isEmpty()) {
+            item { EmptyBasketShopping() }
             item { SuggestListSection() }
-        }else{
+        } else {
 
-            items(nextCartItem.value){item->
-                CartItemCard(item = item, CartStatus.NEXT_CART)
+            items(nextCartItems.value) { item ->
+                CartItemCard(item , CartStatus.NEXT_CART)
             }
+
         }
 
 

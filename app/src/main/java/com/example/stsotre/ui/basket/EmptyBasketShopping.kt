@@ -22,10 +22,9 @@ import com.example.stsotre.R
 import com.example.stsotre.ui.theme.semiDarkText
 import com.example.stsotre.ui.theme.spacing
 
-@Composable
-fun EmptyBasketShopping (
 
-){
+@Composable
+fun EmptyBasketShopping() {
     Column(
         modifier = Modifier
             .fillMaxWidth()

@@ -50,6 +50,9 @@ import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.util.Constants
 import com.example.stsotre.util.DigitHelper
 
+
+
+
 @Composable
 fun SuggestionItemCard(
     item: StoreProduct,

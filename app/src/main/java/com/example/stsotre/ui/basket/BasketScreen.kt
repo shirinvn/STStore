@@ -38,14 +38,12 @@ import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.viewmodel.BasketViewModel
 import com.example.stsotre.viewmodel.HomeViewModel
 
-
 @Composable
-fun BasketScreen (navController: NavHostController){
+fun BasketScreen(navController: NavHostController) {
 
-   Basket(navController)
+    Basket(navController)
 
 }
-
 
 @Composable
 fun Basket(
@@ -68,7 +66,7 @@ fun Basket(
             modifier = Modifier
                 .padding(horizontal = MaterialTheme.spacing.medium),
             selectedTabIndex = selectedTabIndex,
-            contentColor = MaterialTheme.colors.DigiKalaRed,
+            contentColor = MaterialTheme.colors.DigikalaRed,
             backgroundColor = Color.White,
             indicator = { line ->
                 Box(
@@ -86,7 +84,7 @@ fun Basket(
                     onClick = {
                         selectedTabIndex = index
                     },
-                    selectedContentColor = MaterialTheme.colors.DigiKalaRed,
+                    selectedContentColor = MaterialTheme.colors.DigikalaRed,
                     unselectedContentColor = Color.Gray,
                     text = {
                         Row {
@@ -109,4 +107,5 @@ fun Basket(
     }
 
 }
+
 

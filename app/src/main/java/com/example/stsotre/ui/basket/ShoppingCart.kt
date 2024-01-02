@@ -19,35 +19,41 @@ import com.example.stsotre.viewmodel.BasketViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 
+
 @Composable
 fun ShoppingCart(
-
     viewModel: BasketViewModel = hiltViewModel()
-){
-    val currentCartItem = remember {
+) {
+
+    val currentCartItems = remember {
         mutableStateOf(emptyList<CartItem>())
     }
-    LaunchedEffect(key1 = true){
-        viewModel.currentCartItem.collectLatest { list->
-            currentCartItem.value =list
+
+    LaunchedEffect(true) {
+        viewModel.currentCartItems.collectLatest { list ->
+            currentCartItems.value = list
         }
     }
 
-    LazyColumn(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-        .padding(bottom = 60.dp)){
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(bottom = 60.dp),
+    ) {
 
-        if (currentCartItem.value.isEmpty()){
-            item{ EmptyBasketShopping() }
+        if (currentCartItems.value.isEmpty()) {
+            item { EmptyBasketShopping() }
             item { SuggestListSection() }
-        }else{
+        } else {
 
-            items(currentCartItem.value){item->
-                CartItemCard(item = item, CartStatus.CURRENT_CART)
+            items(currentCartItems.value) { item ->
+                CartItemCard(item , CartStatus.CURRENT_CART)
             }
+
         }
 
 
     }
+
 }

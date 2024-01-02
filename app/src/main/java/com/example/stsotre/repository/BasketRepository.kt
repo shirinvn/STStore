@@ -11,37 +11,37 @@ import com.example.stsotre.data.remote.CategoryApiInterface
 import com.example.stsotre.data.remote.NetWorkResult
 import javax.inject.Inject
 
+
 class BasketRepository @Inject constructor(
     private val api: BasketApiInterface,
-    private val cartDao:CartDao
-
+    private val dao: CartDao
 ) : BaseApiResponse() {
-    val currentCartItems= cartDao.getAllItems(CartStatus.CURRENT_CART)
-    val nextCartItems= cartDao.getAllItems(CartStatus.NEXT_CART)
+
+    val currentCartItems = dao.getAllItems(CartStatus.CURRENT_CART)
+    val nextCartItems = dao.getAllItems(CartStatus.NEXT_CART)
 
 
-suspend fun getSuggestedItem(): NetWorkResult<List<StoreProduct>> = safeApiCall {
-    api.getSuggestedItem()
-}
+    suspend fun getSuggestedItems(): NetWorkResult<List<StoreProduct>> =
+        safeApiCall {
+            api.getSuggestedItem()
+        }
 
 
-    suspend fun insertCartItem(cart: CartItem){
-        cartDao.insertCartItem(cart = cart)
+    suspend fun insertCartItem(cart: CartItem) {
+        dao.insertCartItem(cart)
     }
 
-
-
-    suspend fun removeFromCart(cart: CartItem){
-        cartDao.removeFromCart(cart)
+    suspend fun removeFromCart(cart: CartItem) {
+        dao.removeFromCart(cart)
     }
 
-
-    suspend fun changeCartItemStatus(id: String, newCartStatus:CartStatus){
-        cartDao.changeStatusCart(id, newCartStatus )
+    suspend fun changeCartItemStatus(id: String, newStatus: CartStatus) {
+        dao.changeStatusCart(id, newStatus)
     }
 
-    suspend fun changeCartItemCount(id: String, newCount:Int){
-        cartDao.changeCartCountItem(id, newCount )
+    suspend fun changeCartItemCount(id: String, newCount: Int) {
+        dao.changeCartCountItem(id, newCount)
     }
+
 
 }

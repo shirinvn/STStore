@@ -22,45 +22,43 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class BasketViewModel @Inject constructor(private val repository: BasketRepository) : ViewModel() {
 
     val suggestedList = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
 
-    val currentCartItem : Flow<List<CartItem>> = repository.currentCartItems
-    val nextCartItem : Flow<List<CartItem>> = repository.currentCartItems
-     fun getSuggestedItems(){
+    val currentCartItems: Flow<List<CartItem>> = repository.currentCartItems
+    val nextCartItems: Flow<List<CartItem>> = repository.nextCartItems
+
+
+    fun getSuggestedItems() {
         viewModelScope.launch {
-            suggestedList.emit(repository.getSuggestedItem())
+            suggestedList.emit(repository.getSuggestedItems())
         }
-
     }
 
 
-    fun insertCartItem(cart : CartItem){
+    fun insertCartItem(item: CartItem) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertCartItem(cart = cart)
+            repository.insertCartItem(item)
         }
     }
 
 
-    fun removeCartItem(item : CartItem){
+    fun removeCartItem(item: CartItem) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.removeFromCart(item)
         }
     }
 
-
-
-    fun changeCartItemCount(id :String , newStatus: Int){
-
+    fun changeCartItemCount(id: String, newCount: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.changeCartItemCount(id, newStatus)
+            repository.changeCartItemCount(id, newCount)
         }
     }
 
-    fun changeCartItemStatus(id :String , newStatus: CartStatus){
-
+    fun changeCartItemStatus(id: String, newStatus: CartStatus) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.changeCartItemStatus(id, newStatus)
         }
