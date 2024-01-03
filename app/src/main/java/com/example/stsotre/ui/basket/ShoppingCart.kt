@@ -88,29 +88,6 @@ fun ShoppingCart(
                            color = MaterialTheme.colors.darkText
                        )
 
-    is BasketScreenState.Loading -> {
-               item {
-                   Column(modifier = Modifier
-                       .fillMaxWidth()
-                       .height(LocalConfiguration.current.screenHeightDp.dp - 60.dp)
-                       .padding(vertical = MaterialTheme.spacing.small),
-                       horizontalAlignment = Alignment.CenterHorizontally,
-                       verticalArrangement = Arrangement.Center) {
-
-                       Text(text = stringResource(id = R.string.please_wait),
-                           fontWeight = FontWeight.Bold,
-                           style = MaterialTheme.typography.h5,
-                           color = MaterialTheme.colors.darkText
-                       )
-
-
-
-
-
-
-
-
-
 
 
 
