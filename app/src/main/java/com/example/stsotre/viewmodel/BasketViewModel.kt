@@ -32,16 +32,21 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
     val suggestedList = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
 
     val currentCartItems: Flow<List<CartItem>> = repository.currentCartItems
-    val nextCartItems: Flow<List<CartItem>> = repository.nextCartItems
 
     private val _currentCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>>
     =MutableStateFlow(BasketScreenState.Loading)
     val currentCartItem: StateFlow<BasketScreenState<List<CartItem>>> = _currentCartItems
+ private val _nextCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>>
+    =MutableStateFlow(BasketScreenState.Loading)
+    val nextCartItems: StateFlow<BasketScreenState<List<CartItem>>> = _nextCartItems
 
     init {
         viewModelScope.launch (Dispatchers.IO){
             repository.currentCartItems.collectLatest {
                 _currentCartItems.emit(BasketScreenState.Success(it))
+            }
+            repository.nextCartItems.collectLatest { nextCartItems->
+                _nextCartItems.emit(BasketScreenState.Success(nextCartItems))
             }
         }
     }

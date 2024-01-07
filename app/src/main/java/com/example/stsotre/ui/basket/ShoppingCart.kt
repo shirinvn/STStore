@@ -38,18 +38,12 @@ fun ShoppingCart(
     viewModel: BasketViewModel = hiltViewModel()
 ) {
 
-    val currentCartItems = remember {
-        mutableStateOf(emptyList<CartItem>())
-    }
+
 
     val currentCartItemState:BasketScreenState<List<CartItem>
             > by viewModel.currentCartItem.collectAsState(BasketScreenState.Loading)
 
-    LaunchedEffect(true) {
-        viewModel.currentCartItems.collectLatest { list ->
-            currentCartItems.value = list
-        }
-    }
+
 
     LazyColumn(
         modifier = Modifier
@@ -61,12 +55,12 @@ fun ShoppingCart(
         when(currentCartItemState){
             is BasketScreenState.Success -> {
 
-                if (currentCartItems.value.isEmpty()) {
+                if ((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
                     item { EmptyBasketShopping() }
                     item { SuggestListSection() }
                 } else {
 
-                    items(currentCartItems.value) { item ->
+                    items((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data) { item ->
                         CartItemCard(item , CartStatus.CURRENT_CART)
                     }
                     item { SuggestListSection() }
