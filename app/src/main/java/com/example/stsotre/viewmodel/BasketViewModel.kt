@@ -42,12 +42,18 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
 
     init {
         viewModelScope.launch (Dispatchers.IO){
-            repository.currentCartItems.collectLatest {
-                _currentCartItems.emit(BasketScreenState.Success(it))
+            launch {
+                repository.currentCartItems.collectLatest {
+                    _currentCartItems.emit(BasketScreenState.Success(it))
+                }
             }
-            repository.nextCartItems.collectLatest { nextCartItems->
-                _nextCartItems.emit(BasketScreenState.Success(nextCartItems))
+
+            launch {
+                repository.nextCartItems.collectLatest { nextCartItems->
+                    _nextCartItems.emit(BasketScreenState.Success(nextCartItems))
+                }
             }
+
         }
     }
 
