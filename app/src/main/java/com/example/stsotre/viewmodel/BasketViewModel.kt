@@ -31,7 +31,6 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
 
     val suggestedList = MutableStateFlow<NetWorkResult<List<StoreProduct>>>(NetWorkResult.Loading())
 
-    val currentCartItems: Flow<List<CartItem>> = repository.currentCartItems
 
     private val _currentCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>>
     =MutableStateFlow(BasketScreenState.Loading)
