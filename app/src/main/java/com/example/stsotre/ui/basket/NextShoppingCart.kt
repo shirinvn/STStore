@@ -37,9 +37,7 @@ fun NextShoppingCart(
     viewModel: BasketViewModel = hiltViewModel()
 ) {
 
-    val nextCartItems = remember {
-        mutableStateOf(emptyList<CartItem>())
-    }
+
 
     val nextCartItemState:BasketScreenState<List<CartItem>
             > by viewModel.nextCartItems.collectAsState(BasketScreenState.Loading)
@@ -61,11 +59,11 @@ fun NextShoppingCart(
             is BasketScreenState.Success -> {
 
 
-                if (nextCartItems.value.isEmpty()) {
+                if ((nextCartItemState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
                     item { EmptyNextShoppingList() }
                 } else {
 
-                    items(nextCartItems.value) { item ->
+                    items((nextCartItemState as BasketScreenState.Success<List<CartItem>>).data) { item ->
                         CartItemCard(item , CartStatus.NEXT_CART)
                     }
 
