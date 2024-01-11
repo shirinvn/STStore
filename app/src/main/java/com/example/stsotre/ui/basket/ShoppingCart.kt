@@ -63,7 +63,10 @@ fun ShoppingCart(
                     items((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data) { item ->
                         CartItemCard(item , CartStatus.CURRENT_CART)
                     }
-                    item { SuggestListSection() }
+                    item{
+                        CartPriceDetailSection()
+                    }
+                  //  item { SuggestListSection() }
                 }
             }
 
