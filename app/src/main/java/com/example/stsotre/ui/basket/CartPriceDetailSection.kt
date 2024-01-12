@@ -42,6 +42,22 @@ fun CartPriceDetailSection(){
             Text(text = "${stringResource(id = R.string.goods)} 3",
                 style = MaterialTheme.typography.h6,
                 color = Color.Gray)
+
+            Text(text = stringResource(id = R.string.basket_summary),
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.darkText)
+
+            Text(text = "${stringResource(id = R.string.goods)} 3",
+                style = MaterialTheme.typography.h6,
+                color = Color.Gray)
+
+            Text(text = stringResource(id = R.string.basket_summary),
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.darkText)
+
+            Text(text = "${stringResource(id = R.string.goods)} 3",
+                style = MaterialTheme.typography.h6,
+                color = Color.Gray)
         }
 
 
