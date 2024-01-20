@@ -1,5 +1,6 @@
 package com.example.stsotre.ui.basket
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,12 +10,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -39,7 +43,7 @@ fun CartPriceDetailSection(){
                 style = MaterialTheme.typography.h4,
                 color = MaterialTheme.colors.darkText)
 
-            Text(text = "${stringResource(id = R.string.goods)} 3",
+            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
                 style = MaterialTheme.typography.h6,
                 color = Color.Gray)
 
@@ -49,10 +53,86 @@ fun CartPriceDetailSection(){
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
         PriceRow(title = "sgbiv ", price = 324)
         PriceRow(title = "sgbiv ", price = 325, 4)
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
 
+        Row (modifier = Modifier.fillMaxWidth()
+        ,
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically)
+        {
+
+            Text(text = stringResource(id = R.string.dot_bullet),
+                color = Color.Gray,
+                style = MaterialTheme.typography.h4,
+                modifier = Modifier.padding(MaterialTheme.spacing.extraSmall))
+
+
+            Text(text = stringResource(id = R.string.shipping_cost_alert),
+                color = Color.Gray,
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.weight(1f))
+
+        }
+
+        Divider(
+            Modifier
+                .padding(
+                    vertical = MaterialTheme.spacing.medium,
+                    horizontal = MaterialTheme.spacing.small
+                )
+                .width(2.dp)
+                .height(16.dp)
+                .alpha(0.6f),
+            color = Color.LightGray
+        )
+        DigiClubStore(score = 7)
     }
 }
 
+
+
+@Composable
+private  fun DigiClubStore(
+    score:Int
+) {
+
+    Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
+
+    Row (modifier = Modifier.fillMaxWidth()
+    , horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically){
+
+        Row (horizontalArrangement = Arrangement.Start)
+        {
+            Image(painter = painterResource(id = R.drawable.digi_score), contentDescription = "",
+                modifier = Modifier
+                    .size(22.dp)
+                    .padding(MaterialTheme.spacing.extraSmall))
+
+            Text(text = stringResource(id = R.string.digi_club_score),
+                style = MaterialTheme.typography.h6,
+                fontWeight = FontWeight.Medium,
+                color= Color.Gray
+            )
+
+            Text(text = "${DigitHelper.digitByLocateAndSeparator(score.toString())} ${stringResource(id = R.string.digi_club_score)}",
+                style = MaterialTheme.typography.h6,
+                fontWeight = FontWeight.Medium,
+                color= Color.Gray
+            )
+
+
+        }
+
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
+
+        Text(text = stringResource(id = R.string.shipping_cost_alert),
+            color = Color.Gray,
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.fillMaxWidth())
+    }
+
+}
 @Composable
 private  fun PriceRow(
     title:String,

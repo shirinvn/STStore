@@ -7,7 +7,7 @@
     <string name="my_digikala">my digikala</string>
     <string name="search_in">search</string>
     <string name="digikala_jet">digikala jet</string>
-
+    <string name="dot_bullet">.</string>
     <string name="digi_style">digi style</string>
     <string name="digi_pay">digi pay</string>
     <string name="pindo">pindo</string>
@@ -22,9 +22,11 @@
     <string name="most_visited_product">most visited product  </string>
     <string name="favorite_Product">most favorite Product  </string>
     <string name="most_discounted_products">most discounted products  </string>
-
     <string name="commodity">Commodity</string>
+    <string name="shipping_cost_alert">shipping cost alert</string>
+    <string name="digi_club_score">digi club Store</string>
     <string name="goods">Goods</string>
+    <string name="score">Score</string>
     <string name="basket_summary">basket summary</string>
     <string name="industrial_tools_and_equipment">Industrial tools and equipment</string>
     <string name="digital_goods">Digital goods</string>
