@@ -48,6 +48,8 @@ fun CartPriceDetailSection(){
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
         PriceRow(title = "sgbiv ", price = 324)
+        PriceRow(title = "sgbiv ", price = 325, 4)
+
     }
 }
 
@@ -86,8 +88,8 @@ private  fun PriceRow(
 
             Icon(
                 painter = painterResource(id = R.drawable.toman),
+                tint = color,
                 contentDescription = "",
-
                 modifier = Modifier
                     .size(24.dp)
                     .padding(MaterialTheme.spacing.extraSmall)
