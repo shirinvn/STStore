@@ -54,6 +54,10 @@
     <string name="next_cart_list_is_empty">next cart list is empty</string>
     <string name="next_cart_list_is_empty_msg">next cart list is empty</string>
 
+    <string name="good_price">.</string>
+    <string name="goods_dicount">.</string>
+    <string name="goods_total_price">.</string>
+
 
 
 

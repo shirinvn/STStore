@@ -49,6 +49,13 @@
     <string name="basket_summary">خلاصه سبد </string>
     <string name="goods">کالا  </string>
     <string name="dot_bullet">.</string>
+    <string name="good_price">.</string>
+    <string name="goods_dicount">.</string>
+    <string name="goods_total_price">.</string>
+
+
+
+
     <string name="digi_club_score">دیجی کلاب استور</string>
     <string name="score">امتیاز</string>
     <string name="shipping_cost_alert">هزینه ارسال بر اساس آدرس، زمان تحویل، وزن و حجم مرسوله شما محسوب می‌شود.</string>
