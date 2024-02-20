@@ -51,8 +51,8 @@ fun CartPriceDetailSection(){
 
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
-        PriceRow(title = "sgbiv ", price = 324)
-        PriceRow(title = "sgbiv ", price = 325, 4)
+        PriceRow(title = "lebas majlesi ", price = 324)
+        PriceRow(title = "cream poadr ", price = 325, 4)
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
 
         Row (modifier = Modifier.fillMaxWidth()
