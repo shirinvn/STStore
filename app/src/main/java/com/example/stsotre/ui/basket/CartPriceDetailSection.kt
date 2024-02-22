@@ -46,6 +46,21 @@ fun CartPriceDetailSection(){
             Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
                 style = MaterialTheme.typography.h6,
                 color = Color.Gray)
+            Text(text = stringResource(id = R.string.basket_summary),
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.darkText)
+
+            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
+                style = MaterialTheme.typography.h6,
+                color = Color.Gray)
+
+            Text(text = stringResource(id = R.string.basket_summary),
+                style = MaterialTheme.typography.h4,
+                color = MaterialTheme.colors.darkText)
+
+            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
+                style = MaterialTheme.typography.h6,
+                color = Color.Gray)
 
         }
 
