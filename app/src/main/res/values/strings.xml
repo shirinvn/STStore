@@ -50,21 +50,13 @@
     <string name="goods">کالا  </string>
     <string name="dot_bullet">.</string>
     <string name="good_price">.</string>
-    <string name="goods_dicount">.</string>
-    <string name="goods_total_price">.</string>
-
-
-
-
+    <string name="goods_dicount">تخفیف کالاها</string>
+    <string name="goods_total_price">جمع سبد خرید</string>
     <string name="digi_club_score">دیجی کلاب استور</string>
     <string name="score">امتیاز</string>
     <string name="shipping_cost_alert">هزینه ارسال بر اساس آدرس، زمان تحویل، وزن و حجم مرسوله شما محسوب می‌شود.</string>
-
-
-
     <string name="next_cart_list_is_empty">سبد خرید بعدی شما خالی است </string>
     <string name="next_cart_list_is_empty_msg">شما می توانید  محصولاتی که به سبد خرید خود افزوده‌اید و فعلا قصد خرید آن را ندارید در لیست خرید بعدی قرار داده و هر زمان مایل بودید آن‌ها را به سبد خود اضافه کرده و خرید آن‌ها را تکمیل کنید. </string>
-
 
 
 

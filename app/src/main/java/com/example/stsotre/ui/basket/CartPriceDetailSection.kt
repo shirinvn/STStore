@@ -26,13 +26,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.stsotre.R
+import com.example.stsotre.data.model.basket.CartDetails
 import com.example.stsotre.ui.theme.DigikalaRed
 import com.example.stsotre.ui.theme.darkText
 import com.example.stsotre.ui.theme.spacing
 import com.example.stsotre.util.DigitHelper
+import com.example.stsotre.util.DigitHelper.digitByLocateAndSeparator
 
 @Composable
-fun CartPriceDetailSection(){
+fun CartPriceDetailSection(
+    item : CartDetails
+){
 
     Column( modifier = Modifier.padding(MaterialTheme.spacing.medium)) {
 
@@ -43,22 +47,7 @@ fun CartPriceDetailSection(){
                 style = MaterialTheme.typography.h4,
                 color = MaterialTheme.colors.darkText)
 
-            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
-                style = MaterialTheme.typography.h6,
-                color = Color.Gray)
-            Text(text = stringResource(id = R.string.basket_summary),
-                style = MaterialTheme.typography.h4,
-                color = MaterialTheme.colors.darkText)
-
-            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
-                style = MaterialTheme.typography.h6,
-                color = Color.Gray)
-
-            Text(text = stringResource(id = R.string.basket_summary),
-                style = MaterialTheme.typography.h4,
-                color = MaterialTheme.colors.darkText)
-
-            Text(text = "${DigitHelper.digitByLocateAndSeparator("3")} $ {stringResource(id = R.string.goods)}" ,
+            Text(text = "${DigitHelper.digitByLocateAndSeparator(item.totalCount.toString())} ${stringResource(id = R.string.goods)}" ,
                 style = MaterialTheme.typography.h6,
                 color = Color.Gray)
 
@@ -66,8 +55,10 @@ fun CartPriceDetailSection(){
 
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.semilarge))
-        PriceRow(title = "lebas majlesi ", price = 324)
-        PriceRow(title = "cream poadr ", price = 325, 4)
+        PriceRow(title = stringResource(id = R.string.good_price), digitByLocateAndSeparator(item.totalPrice.toString()))
+        PriceRow(title = stringResource(id = R.string.goods_dicount), price =  digitByLocateAndSeparator(item.totalDisCount.toString()), 4)
+        PriceRow(title = stringResource(id = R.string.goods_total_price), price =  digitByLocateAndSeparator(item.payablePrice.toString()), 4)
+
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
 
         Row (modifier = Modifier.fillMaxWidth()
@@ -144,14 +135,15 @@ private  fun DigiClubStore(
         Text(text = stringResource(id = R.string.shipping_cost_alert),
             color = Color.Gray,
             style = MaterialTheme.typography.h6,
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = MaterialTheme.spacing.biggersmall))
     }
 
 }
 @Composable
 private  fun PriceRow(
     title:String,
-    price:Long,
+    price:String,
     discount: Int= 0
 ){
 
@@ -175,7 +167,7 @@ private  fun PriceRow(
 
         Row {
             Text(
-                text = DigitHelper.digitByLocateAndSeparator(price.toString()),
+                text = price,
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.SemiBold,
                 color = color,
