@@ -1,7 +1,10 @@
 package com.example.stsotre.ui.basket
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,67 +48,79 @@ fun ShoppingCart(
             > by viewModel.currentCartItem.collectAsState(BasketScreenState.Loading)
 
 
+    Box(modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter)
+    {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(bottom = 60.dp),
+        ) {
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(bottom = 60.dp),
-    ) {
+            when(currentCartItemState){
+                is BasketScreenState.Success -> {
 
-        when(currentCartItemState){
-            is BasketScreenState.Success -> {
+                    if ((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
+                        item { EmptyBasketShopping() }
+                        item { SuggestListSection() }
+                    } else {
 
-                if ((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
-                    item { EmptyBasketShopping() }
-                    item { SuggestListSection() }
-                } else {
-
-                    items((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data) { item ->
-                        CartItemCard(item , CartStatus.CURRENT_CART)
+                        items((currentCartItemState as BasketScreenState.Success<List<CartItem>>).data) { item ->
+                            CartItemCard(item , CartStatus.CURRENT_CART)
+                        }
+                        item{
+                            CartPriceDetailSection(
+                                cartDetail.value
+                            )
+                        }
+                        //  item { SuggestListSection() }
                     }
-                    item{
-                        CartPriceDetailSection(
-                            cartDetail.value
-                        )
+                }
+
+                is BasketScreenState.Loading -> {
+                    item {
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .height(LocalConfiguration.current.screenHeightDp.dp - 60.dp)
+                            .padding(vertical = MaterialTheme.spacing.small),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center) {
+
+                            Text(text = stringResource(id = R.string.please_wait),
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.h5,
+                                color = MaterialTheme.colors.darkText
+                            )
+
+
+
+
+
+
+                        }
                     }
-                  //  item { SuggestListSection() }
+
+                }
+                is BasketScreenState.Error<*> -> {
+
                 }
             }
 
-            is BasketScreenState.Loading -> {
-               item {
-                   Column(modifier = Modifier
-                       .fillMaxWidth()
-                       .height(LocalConfiguration.current.screenHeightDp.dp - 60.dp)
-                       .padding(vertical = MaterialTheme.spacing.small),
-                       horizontalAlignment = Alignment.CenterHorizontally,
-                       verticalArrangement = Arrangement.Center) {
-
-                       Text(text = stringResource(id = R.string.please_wait),
-                           fontWeight = FontWeight.Bold,
-                           style = MaterialTheme.typography.h5,
-                           color = MaterialTheme.colors.darkText
-                       )
 
 
 
 
-
-
-                   }
-               }
-
-            }
-            is BasketScreenState.Error<*> -> {
-
-            }
         }
 
+        Row (modifier = Modifier.fillMaxWidth()
+            .align(Alignment.BottomCenter)
+            .padding(bottom = 60.dp)){
+            BuyProcessContinue()
 
-
-
+        }
 
     }
+
 
 }
