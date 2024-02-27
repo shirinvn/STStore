@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.stsotre.ui.theme.DigikalaRed
 import com.example.stsotre.ui.theme.elevation
 import com.example.stsotre.ui.theme.roundedShape
 import com.example.stsotre.ui.theme.spacing
@@ -36,9 +37,18 @@ fun BuyProcessContinue(
                 .padding(
                     horizontal = MaterialTheme.spacing.medium,
                     vertical = MaterialTheme.spacing.medium
-                )
+                ),
+            horizontalArrangement = Arrangement.SpaceBetween
+            , verticalAlignment = Alignment.CenterVertically
         ){
-            Button(colors = ButtonDefaults.ContentPadding) {
+            Button(onClick = {}
+                ,
+                colors = ButtonDefaults.buttonColors(
+                backgroundColor = MaterialTheme.colors.DigikalaRed
+            ),
+                shape = MaterialTheme.roundedShape.small) {
+
+
 
             }
 
